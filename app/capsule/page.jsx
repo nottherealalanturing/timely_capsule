@@ -1,32 +1,35 @@
 'use client';
 
-import React, { useState } from 'react';
 import {
   Box,
-  Heading,
-  Text,
-  Input,
-  Textarea,
   Button,
-  VStack,
   FormControl,
   FormLabel,
+  Heading,
+  Icon,
+  Input,
   InputGroup,
   InputLeftElement,
-  Icon,
-  Select,
+  Text,
+  Textarea,
+  VStack,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 import { MdOutlineSubtitles } from 'react-icons/md';
 
 import DatePicker from '../component/DateTime';
+import CapsuleCreatedPage from '../component/successcapsule';
 
 const CreateCapsulePage = () => {
-  const [deletionDate, setDeletionDate] = useState(new Date());
-  const [startDate, setStartDate] = useState(new Date());
+  const [deletionTime, setDeletionTime] = useState(new Date());
+  const [unveilingDate, setUnveilingDate] = useState(new Date());
   const [formInput, setFormInputs] = useState({});
+  const [createdCapsule, setCreatedCapsule] = useState(false);
+  const [sendMail, setSendMail] = useState(false);
+  const [url, setUrl] = useState('');
 
-  const handleDeletionDateChange = (date) => {
-    setDeletionDate(date);
+  const handleDeletionTimeChange = (date) => {
+    setDeletionTime(date);
   };
 
   const handleInputChange = (event) => {
@@ -37,11 +40,40 @@ const CreateCapsulePage = () => {
     setFormInputs((e) => ({ ...e, [name]: value }));
   };
 
-  const handleSubmit = () => {
-    console.log({ ...formInput, startDate, deletionDate });
+  const handleSubmit = async () => {
+    if (
+      formInput['title'].length !== 0 ||
+      formInput['content'].length !== 0 ||
+      formInput['sender'].length !== 0
+    ) {
+      try {
+        const response = await fetch('/api/craft', {
+          method: 'POST',
+          body: JSON.stringify({ ...formInput, unveilingDate, deletionTime }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const data = await response.json();
+
+        setFormInputs({
+          sender: '',
+          title: '',
+          content: '',
+        });
+
+        setUrl(data.url);
+        setCreatedCapsule(true);
+      } catch (error) {
+        console.error('Error generating ID:', error);
+      }
+    }
   };
 
-  return (
+  return createdCapsule ? (
+    <CapsuleCreatedPage capsuleUrl={url} />
+  ) : (
     <Box p={8} maxW="xl" mx="auto">
       <VStack spacing={8} align="center">
         <Heading
@@ -62,7 +94,7 @@ const CreateCapsulePage = () => {
         <form>
           <VStack spacing={4} align="stretch">
             <FormControl>
-              <FormLabel htmlFor="messageTitle">Sender</FormLabel>
+              <FormLabel htmlFor="msgsender">Sender</FormLabel>
               <InputGroup size="lg">
                 <InputLeftElement
                   pointerEvents="none"
@@ -70,11 +102,12 @@ const CreateCapsulePage = () => {
                 />
                 <Input
                   type="text"
-                  id="send"
+                  id="msgsender"
                   placeholder="Name of sender"
                   borderRadius="md"
                   name="sender"
                   onChange={handleInputChange}
+                  value={formInput['sender']}
                 />
               </InputGroup>
             </FormControl>
@@ -93,6 +126,7 @@ const CreateCapsulePage = () => {
                   borderRadius="md"
                   name="title"
                   onChange={handleInputChange}
+                  value={formInput['title']}
                 />
               </InputGroup>
             </FormControl>
@@ -103,15 +137,16 @@ const CreateCapsulePage = () => {
                 placeholder="Write your message here..."
                 size="lg"
                 borderRadius="md"
-                name="message"
+                name="content"
                 onChange={handleInputChange}
+                value={formInput['content']}
               />
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="deletionDate">Deletion Time</FormLabel>
+              <FormLabel htmlFor="deletionTime">Deletion Time</FormLabel>
               <DatePicker
-                onChange={(e) => setDeletionDate(e)}
-                selectedDate={deletionDate}
+                onChange={(e) => setDeletionTime(e)}
+                selectedDate={deletionTime}
                 timeCaption="Time"
                 dateFormat="h:mm aa"
                 showTimeSelectOnly
@@ -120,8 +155,8 @@ const CreateCapsulePage = () => {
             <FormControl>
               <FormLabel htmlFor="unveilDateTime">Unveil Date & Time</FormLabel>
               <DatePicker
-                onChange={(e) => setStartDate(e)}
-                selectedDate={startDate}
+                onChange={(e) => setUnveilingDate(e)}
+                selectedDate={unveilingDate}
                 showTimeSelect
                 dateFormat="Pp"
               />

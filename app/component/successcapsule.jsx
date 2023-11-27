@@ -7,6 +7,7 @@ import {
   Stack,
   Center,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function CapsuleCreatedPage({ capsuleUrl }) {
@@ -15,21 +16,19 @@ export default function CapsuleCreatedPage({ capsuleUrl }) {
 
   // Function to handle sending the capsule URL via email
   const handleSendEmail = () => {
-    // Implement your logic for sending the email
     console.log(`Sending capsule URL ${capsuleUrl} to ${email}`);
-    // Reset the email input after sending
+
     setEmail('');
   };
 
   return (
     <Center>
       <Box textAlign="center" py={10} px={6} maxW="md">
-        {/* Congratulatory message */}
         <Heading as="h2" size="xl" mb={3}>
           Congratulations!
         </Heading>
         <Text fontSize="lg" color="gray.500" mb={6}>
-          You've successfully created a time capsule.
+          You&apos;ve successfully created a time capsule.
         </Text>
 
         {/* Display the capsule URL */}
@@ -37,12 +36,16 @@ export default function CapsuleCreatedPage({ capsuleUrl }) {
           <Text fontWeight="bold" color="teal.500">
             Your Time Capsule URL:
           </Text>
-          <Text color="teal.500" mb={4}>
+          <Text
+            color="teal.500"
+            mb={4}
+            as={Link}
+            href={`/capsule/${capsuleUrl}`}
+          >
             {capsuleUrl}
           </Text>
         </Stack>
 
-        {/* Form-like element to send the capsule URL via email */}
         <Stack direction="column" align="center">
           <Text fontWeight="bold" mb={2}>
             Send your capsule URL via email:

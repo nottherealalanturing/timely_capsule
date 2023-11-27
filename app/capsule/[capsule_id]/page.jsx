@@ -1,6 +1,7 @@
 'use client';
 
 import UnveilTimer from '@/app/component/unveiltimer';
+import firebaseDateToJSDate from '@/app/utils/dateconverter';
 import {
   Avatar,
   Box,
@@ -14,7 +15,7 @@ import { useEffect, useState } from 'react';
 
 const ViewCapsulePage = () => {
   // Sample data for the viewed message
-  const messageData = {
+  /*   const messageData = {
     title: 'A Timeless Journey',
     content:
       'Craft a timeless message that will transcend through time. Timely Capsule lets you send messages into the future, ensuring that your words arrive exactly when they matter most. From heartfelt notes to future self-reminders, each message is a timeless connection waiting to unfold.',
@@ -24,6 +25,15 @@ const ViewCapsulePage = () => {
     // Add a new field for the deletion time
     deletionTime: new Date('December 10, 2023 00:00:00 GMT').getTime(),
     unveilingDate: new Date('December 10, 2024 00:00:00 GMT').getTime(),
+  }; */
+
+  const messageData = {
+    content: 'adkjadjkdk',
+    deletionTime: new Date('2023-11-27T04:05:03.986Z'),
+    sender: 'orange',
+    title: 'is the name',
+    unveilingDate: new Date('2022-12-01T03:05:03.000Z'),
+    url: '2T3-gKrf',
   };
 
   // State to store the remaining time until deletion
@@ -68,7 +78,8 @@ const ViewCapsulePage = () => {
           {messageData.title}
         </Heading>
         <Text color={'gray.500'}>
-          {messageData.date} | ID: {messageData.uniqueID}
+          {messageData.deletionTime.toLocaleDateString()} | ID:{' '}
+          {messageData.url}
         </Text>
         <Divider />
         <Text color={'gray.800'} fontSize="lg">
