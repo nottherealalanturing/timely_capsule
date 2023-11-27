@@ -97,6 +97,7 @@ const CreateCapsulePage = () => {
               <InputGroup size="lg">
                 <InputLeftElement
                   pointerEvents="none"
+                  // eslint-disable-next-line react/no-children-prop
                   children={<Icon as={MdOutlineSubtitles} color="gray.300" />}
                 />
                 <Input
@@ -116,6 +117,7 @@ const CreateCapsulePage = () => {
               <InputGroup size="lg">
                 <InputLeftElement
                   pointerEvents="none"
+                  // eslint-disable-next-line react/no-children-prop
                   children={<Icon as={MdOutlineSubtitles} color="gray.300" />}
                 />
                 <Input
