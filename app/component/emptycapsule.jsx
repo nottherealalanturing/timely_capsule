@@ -1,7 +1,8 @@
-import { Box, Button, Heading, Text } from '@chakra-ui/react';
-import Link from 'next/link';
+'use client';
 
-export default function NotFound() {
+import { Box, Button, Heading, Spinner, Text } from '@chakra-ui/react';
+
+const EmptyCapsule = () => {
   return (
     <Box textAlign="center" py={10} px={6}>
       <Heading
@@ -10,16 +11,17 @@ export default function NotFound() {
         size="2xl"
         bgGradient="linear(to-r, teal.400, teal.600)"
         backgroundClip="text"
+        py={{ base: 12, md: 30 }}
       >
         404
       </Heading>
 
       <Text fontSize="18px" mt={3} mb={2}>
-        Time Capsule Missing!
+        Oops! You&apos;ve stumbled upon a time portal malfunction!
       </Text>
       <Text color={'gray.500'} mb={6}>
-        Oops! It seems the time capsule for this page hasn&apos;t been created
-        yet.
+        It appears the time capsule for this page hasn&apos;t been invented or
+        perhaps, it&apos;s hiding in a different timeline.
       </Text>
 
       <Button
@@ -30,8 +32,10 @@ export default function NotFound() {
         as={Link}
         href={'/'}
       >
-        Journey Back to Home
+        Take a Quantum Leap Back to Home
       </Button>
     </Box>
   );
-}
+};
+
+export default EmptyCapsule;

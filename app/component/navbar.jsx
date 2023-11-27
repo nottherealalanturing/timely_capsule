@@ -1,20 +1,11 @@
 'use client';
 
-import React from 'react';
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  IconButton,
-  Text,
-} from '@chakra-ui/react';
+import { Container, Flex } from '@chakra-ui/react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { BsSendCheckFill } from 'react-icons/bs';
 import { usePathname } from 'next/navigation';
 import logo from '../../public/logo.png';
 import timem from '../../public/time-message.png';
-import Image from 'next/image';
 
 const Navbar = () => {
   const pathname = usePathname();

@@ -22,7 +22,7 @@ export default function Home() {
           as={Box}
           textAlign={'center'}
           spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
+          py={{ base: 12, md: 30 }}
         >
           <Heading
             fontWeight={600}

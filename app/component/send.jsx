@@ -1,15 +1,15 @@
 'use client';
 
 import {
-  Flex,
-  Stack,
-  Heading,
-  Text,
-  Input,
   Button,
+  Flex,
+  Heading,
   Icon,
-  useColorModeValue,
+  Input,
+  Stack,
+  Text,
   createIcon,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 export default function CardWithIllustration() {
