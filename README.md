@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Timely Capsule App 🕰️
+
+Welcome to Timely Capsule, your ultimate platform for sending and receiving messages across time!
+
+## Table of Contents
+
+- [Timely Capsule App 🕰️](#timely-capsule-app-️)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+  - [Usage](#usage)
+  - [Technologies Used](#technologies-used)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+## Introduction
+
+Timely Capsule is a unique app that allows users to send messages into the future, creating a connection across different moments in time. From heartfelt notes to future self-reminders, each message is a timeless connection waiting to unfold.
+
+## Features
+
+- **Time-Defying Communication**: Break the barriers of time and send messages to the future.
+- **Thoughtful Scheduling**: Craft your messages now, schedule them for later, and let anticipation build.
+- **Secure and Personal**: Your messages are private and secure, creating a personal time capsule for you and your loved ones.
 
 ## Getting Started
 
-First, run the development server:
+To get started with Timely Capsule, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone this repository: `git clone https://github.com/nottherealalanturing/timely_capsule.git`
+2. Install dependencies: `npm install` or `yarn install`
+3. Start the development server: `npm start` or `yarn start`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Create a Time Capsule: Craft your message, set the unveiling date, and send it into the future.
+2. Unveil a Time Capsule: Explore messages from the past as they become viewable on the scheduled date.
+3. Share the Experience: Share your capsule URLs with friends and family to create a shared journey through time.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies Used
 
-## Learn More
+- [Next.js](https://nextjs.org/) - React framework for building web applications.
+- [Chakra UI](https://chakra-ui.com/) - A simple, modular, and accessible component library for React.
+- [React Icons](https://react-icons.github.io/react-icons/) - Icons library for React applications.
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are welcome! If you have ideas for new features, improvements, or find any issues, feel free to open an issue or submit a pull request.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the [MIT License](LICENSE).

@@ -36,7 +36,7 @@ const UnveilTimer = ({ messageData }) => {
     <Center>
       <Box textAlign="center" py={10} px={6} maxW="md">
         <Text fontSize="2xl" fontWeight="bold" py={{ base: 12, md: 30 }}>
-          "{messageData.title}" by {messageData.sender}
+          &ldquo;{messageData.title}&ldquo; by {messageData.sender}
         </Text>
         <Text fontSize="lg" color="gray.500" mt={2}>
           Will be unveiled on {formattedDate}
