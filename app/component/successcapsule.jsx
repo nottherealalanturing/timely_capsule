@@ -16,7 +16,7 @@ import { useState } from 'react';
 export default function CapsuleCreatedPage({ capsuleUrl }) {
   const [sendMail, setSendMail] = useState(false);
   const [email, setEmail] = useState('');
-  const PATHNAME = `https://timelycapsule.vercel.app/capsule/${capsuleUrl}`;
+  const PATHNAME = `https://timely-capsule.vercel.app/capsule/${capsuleUrl}`;
 
   const message = {
     from: 'timely@capsule.com',
