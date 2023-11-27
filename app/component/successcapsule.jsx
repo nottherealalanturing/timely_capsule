@@ -1,24 +1,42 @@
+'use client';
+
 import {
   Box,
-  Heading,
-  Text,
-  Input,
   Button,
-  Stack,
   Center,
+  Heading,
+  Input,
+  Stack,
+  Text,
 } from '@chakra-ui/react';
+import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 import { useState } from 'react';
 
 export default function CapsuleCreatedPage({ capsuleUrl }) {
-  // State for the email input
+  const [sendMail, setSendMail] = useState(false);
   const [email, setEmail] = useState('');
+  const PATHNAME = `localhost:3000/capsule/${capsuleUrl}`;
 
-  // Function to handle sending the capsule URL via email
+  const message = {
+    from: 'timely@capsule.com',
+    user_email: email,
+    message: PATHNAME,
+  };
+
   const handleSendEmail = () => {
-    console.log(`Sending capsule URL ${capsuleUrl} to ${email}`);
-
-    setEmail('');
+    emailjs
+      .send('service_4hzn6qr', 'template_iby7ho9', message, 'gOyHyH8Gv_6BZlNwF')
+      .then(
+        function (response) {
+          console.log('SUCCESS!', response.status, response.text);
+          setEmail('');
+          setSendMail(true);
+        },
+        function (error) {
+          console.log('FAILED...', error);
+        }
+      );
   };
 
   return (
@@ -46,26 +64,39 @@ export default function CapsuleCreatedPage({ capsuleUrl }) {
           </Text>
         </Stack>
 
-        <Stack direction="column" align="center">
-          <Text fontWeight="bold" mb={2}>
-            Send your capsule URL via email:
-          </Text>
-          <Input
-            type="email"
-            placeholder="Enter recipient's email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            mb={4}
-          />
+        {sendMail ? (
           <Button
             colorScheme="teal"
             bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
             color="white"
-            onClick={handleSendEmail}
+            variant="solid"
+            as={Link}
+            href={'/'}
           >
-            Send Email
+            Journey Back to Home
           </Button>
-        </Stack>
+        ) : (
+          <Stack direction="column" align="center">
+            <Text fontWeight="bold" mb={2}>
+              Send your capsule URL via email:
+            </Text>
+            <Input
+              type="email"
+              placeholder="Enter recipient's email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              mb={4}
+            />
+            <Button
+              colorScheme="teal"
+              bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
+              color="white"
+              onClick={handleSendEmail}
+            >
+              Send Email
+            </Button>
+          </Stack>
+        )}
       </Box>
     </Center>
   );

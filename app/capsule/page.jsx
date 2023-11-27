@@ -25,7 +25,6 @@ const CreateCapsulePage = () => {
   const [unveilingDate, setUnveilingDate] = useState(new Date());
   const [formInput, setFormInputs] = useState({});
   const [createdCapsule, setCreatedCapsule] = useState(false);
-  const [sendMail, setSendMail] = useState(false);
   const [url, setUrl] = useState('');
 
   const handleDeletionTimeChange = (date) => {
