@@ -55,15 +55,7 @@ export default function CapsuleCreatedPage({ capsuleUrl }) {
           <Text fontWeight="bold" color="teal.500">
             Your Capsule will be viewable at:
           </Text>
-          <Text
-            color="teal.500"
-            mb={4}
-            as={Link}
-            href={`/capsule/${capsuleUrl}`}
-            fontWeight={'500'}
-          >
-            {capsuleUrl}
-          </Text>
+
           <ChakraLink as={Link} href={`/capsule/${capsuleUrl}`}>
             {capsuleUrl}
           </ChakraLink>
