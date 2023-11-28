@@ -40,7 +40,7 @@ const UnveilTimer = ({ messageData }) => {
     <Center py={6}>
       <Box
         maxW={'445px'}
-        w={'full'}
+        w={{ base: '90%', md: 'full' }}
         // eslint-disable-next-line react-hooks/rules-of-hooks
         bg={useColorModeValue('white', 'gray.900')}
         boxShadow={'2xl'}
@@ -50,9 +50,14 @@ const UnveilTimer = ({ messageData }) => {
         justifyContent={'center'}
         alignContent="center"
       >
-        <Box h={'50px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
-          <Image src={logo} alt="Logo" height={50} />
-        </Box>
+        <Box
+          h={'50px'}
+          bg={'gray.100'}
+          mt={-6}
+          mx={-6}
+          mb={6}
+          pos={'relative'}
+        ></Box>
         <Stack>
           <Text
             color={'green.500'}
@@ -73,15 +78,15 @@ const UnveilTimer = ({ messageData }) => {
             {messageData.title}
           </Heading>
           <Text color={'gray.500'} fontWeight={600}>
-            your message from {messageData.sender} will be unveiled on{' '}
-            {formattedDate}
+            Mark your calendar for {messageData.sender}&apos;s message,
+            scheduled to be revealed on {formattedDate}.
           </Text>
         </Stack>
         <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
           <Avatar name={messageData.sender} bg={'gray.500'} />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
             <Text color={'gray.500'} fontWeight={700}>
-              couuntdown: {formatTime(timeRemaining)}
+              countdown: {formatTime(timeRemaining)}
             </Text>
           </Stack>
         </Stack>
