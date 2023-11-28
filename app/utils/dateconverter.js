@@ -11,3 +11,13 @@ export function formatTime(milliseconds) {
 
   return `${hours}h ${minutes % 60}m ${seconds % 60}s`;
 }
+
+export function addHoursAndMinutes(originalDate, hoursToAdd, minutesToAdd) {
+  let hours = isNaN(hoursToAdd) ? 0 : hoursToAdd;
+  let minutes = isNaN(minutesToAdd) ? 0 : minutesToAdd;
+
+  const newDate = new Date(originalDate);
+  newDate.setHours(newDate.getHours() + hours);
+  newDate.setMinutes(newDate.getMinutes() + minutes);
+  return newDate;
+}

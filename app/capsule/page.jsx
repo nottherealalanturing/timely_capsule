@@ -16,9 +16,10 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { MdOutlineSubtitles } from 'react-icons/md';
-
 import DatePicker from '../component/DateTime';
 import CapsuleCreatedPage from '../component/successcapsule';
+import DurationTimer from '../component/durationtimer';
+import { addHoursAndMinutes } from '../utils/dateconverter';
 
 const CreateCapsulePage = () => {
   const [deletionTime, setDeletionTime] = useState(new Date());
@@ -26,9 +27,12 @@ const CreateCapsulePage = () => {
   const [formInput, setFormInputs] = useState({});
   const [createdCapsule, setCreatedCapsule] = useState(false);
   const [url, setUrl] = useState('');
+  const [duration, setDuration] = useState({ hours: 0, minutes: 1 });
 
   const handleDeletionTimeChange = (date) => {
-    setDeletionTime(date);
+    setDeletionTime(
+      addHoursAndMinutes(unveilingDate, duration[0], duration[1])
+    );
   };
 
   const handleInputChange = (event) => {
@@ -48,7 +52,15 @@ const CreateCapsulePage = () => {
       try {
         const response = await fetch('/api/craft', {
           method: 'POST',
-          body: JSON.stringify({ ...formInput, unveilingDate, deletionTime }),
+          body: JSON.stringify({
+            ...formInput,
+            unveilingDate,
+            deletionTime: addHoursAndMinutes(
+              unveilingDate,
+              parseInt(duration['hours']),
+              parseInt(duration['minutes'])
+            ),
+          }),
           headers: {
             'Content-Type': 'application/json',
           },
@@ -86,7 +98,8 @@ const CreateCapsulePage = () => {
           </Text>
         </Heading>
         <Text color={'gray.500'}>
-          Write a timeless message that will transcend through time.
+          Craft a fleeting message that will grace the fabric of time before
+          gracefully fading away.
         </Text>
       </VStack>
       <Box mt={8}>
@@ -144,16 +157,6 @@ const CreateCapsulePage = () => {
               />
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="deletionTime">Deletion Time</FormLabel>
-              <DatePicker
-                onChange={(e) => setDeletionTime(e)}
-                selectedDate={deletionTime}
-                timeCaption="Time"
-                dateFormat="h:mm aa"
-                showTimeSelectOnly
-              />
-            </FormControl>
-            <FormControl>
               <FormLabel htmlFor="unveilDateTime">Unveil Date & Time</FormLabel>
               <DatePicker
                 onChange={(e) => setUnveilingDate(e)}
@@ -162,6 +165,13 @@ const CreateCapsulePage = () => {
                 dateFormat="Pp"
               />
             </FormControl>
+            <FormControl>
+              <FormLabel htmlFor="deletionTime">
+                Auto-Delete Time (HH:MM)
+              </FormLabel>
+            </FormControl>
+            <DurationTimer timer={[duration, setDuration]} />
+
             <Button
               colorScheme={'green'}
               bg={'green.400'}

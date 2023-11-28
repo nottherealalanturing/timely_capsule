@@ -61,16 +61,16 @@ export default function Home() {
             <Text as={'span'} color={'green.400'}>
               Timely Capsule
             </Text>{' '}
-            allows you send a message that becomes viewable on a specific date
-            with a countdown. Schedule your thoughts, dreams, and messages to
-            transcend time. Timely Capsule lets you send messages into the
-            future, ensuring that your words arrive exactly when they matter
-            most. From heartfelt notes to future self-reminders, each message is
-            a timeless connection waiting to unfold.
+            allows you send a note that becomes viewable on a specific date with
+            a countdown. Schedule your thoughts, dreams, and messages to
+            transcend time, well sort of. Timely Capsule lets you send capsules
+            into the future, ensuring that your words arrive exactly when they
+            matter most. From heartfelt notes to future self-reminders, each
+            message is a timeless connection waiting to unfold.
           </Text>
           <Text color={'gray.500'}>
             Join us in the journey of weaving time and messages together. Start
-            creating your timeless notes now.
+            creating your notes now.
           </Text>
 
           <Stack
