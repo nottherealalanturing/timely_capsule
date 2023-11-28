@@ -19,6 +19,7 @@ const DurationTimer = ({ timer }) => {
   return (
     <Stack shouldWrapChildren direction="row">
       <NumberInput
+        width={32}
         defaultValue={0}
         min={0}
         max={23}
@@ -34,6 +35,7 @@ const DurationTimer = ({ timer }) => {
         </NumberInputStepper>
       </NumberInput>
       <NumberInput
+        width={32}
         defaultValue={0}
         min={0}
         max={59}

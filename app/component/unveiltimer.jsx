@@ -2,6 +2,10 @@ import { Avatar, Box, Center, Text } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
+import { Heading, Stack, useColorModeValue } from '@chakra-ui/react';
+import Image from 'next/image';
+import logo from '../../public/logo.png';
+
 function formatTime(milliseconds) {
   const seconds = Math.floor(milliseconds / 1000);
   const minutes = Math.floor(seconds / 60);
@@ -30,27 +34,57 @@ const UnveilTimer = ({ messageData }) => {
     return () => clearInterval(interval);
   }, [unveilingDate]);
 
-  const formattedDate = format(unveilingDate, 'MM/dd/yyyy');
+  const formattedDate = format(unveilingDate, 'MM/dd/yyyy hh:mm');
 
   return (
-    <Center>
-      <Box textAlign="center" py={10} px={6} maxW="md">
-        <Text fontSize="2xl" fontWeight="bold" py={{ base: 12, md: 30 }}>
-          &ldquo;{messageData.title}&ldquo; by {messageData.sender}
-        </Text>
-        <Text fontSize="lg" color="gray.500" mt={2}>
-          Will be unveiled on {formattedDate}
-        </Text>
+    <Center py={6}>
+      <Box
+        maxW={'445px'}
+        w={'full'}
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        bg={useColorModeValue('white', 'gray.900')}
+        boxShadow={'2xl'}
+        rounded={'md'}
+        p={6}
+        overflow={'hidden'}
+        justifyContent={'center'}
+        alignContent="center"
+      >
+        <Box h={'50px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
+          <Image src={logo} alt="Logo" height={50} />
+        </Box>
+        <Stack>
+          <Text
+            color={'green.500'}
+            textTransform={'uppercase'}
+            fontWeight={800}
+            fontSize={'sm'}
+            letterSpacing={1.1}
+          >
+            ID: {messageData.url}
+          </Text>
 
-        <Text fontSize="2xl" color="teal.500" mt={4} fontWeight="bold">
-          Countdown: {formatTime(timeRemaining)}
-        </Text>
-
-        <Avatar size="lg" name={messageData.sender} bg="gray.400" mt={6} />
-
-        <Text fontSize="lg" color="gray.500" mt={4}>
-          ⏳ Time is ticking! Prepare for the big reveal.
-        </Text>
+          <Heading
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            color={useColorModeValue('gray.700', 'white')}
+            fontSize={'2xl'}
+            fontFamily={'body'}
+          >
+            {messageData.title}
+          </Heading>
+          <Text color={'gray.500'} fontWeight={600}>
+            your message from {messageData.sender} will be unveiled on{' '}
+            {formattedDate}
+          </Text>
+        </Stack>
+        <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
+          <Avatar name={messageData.sender} bg={'gray.500'} />
+          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+            <Text color={'gray.500'} fontWeight={700}>
+              couuntdown: {formatTime(timeRemaining)}
+            </Text>
+          </Stack>
+        </Stack>
       </Box>
     </Center>
   );
