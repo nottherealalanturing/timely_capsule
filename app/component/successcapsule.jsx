@@ -8,6 +8,7 @@ import {
   Input,
   Stack,
   Text,
+  Link as ChakraLink,
 } from '@chakra-ui/react';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
@@ -52,16 +53,12 @@ export default function CapsuleCreatedPage({ capsuleUrl }) {
         {/* Display the capsule URL */}
         <Stack direction="column" align="center" mb={6}>
           <Text fontWeight="bold" color="teal.500">
-            Your Time Capsule URL:
+            Your Capsule will be viewable at:
           </Text>
-          <Text
-            color="teal.500"
-            mb={4}
-            as={Link}
-            href={`/capsule/${capsuleUrl}`}
-          >
+
+          <ChakraLink as={Link} href={`/capsule/${capsuleUrl}`}>
             {capsuleUrl}
-          </Text>
+          </ChakraLink>
         </Stack>
 
         {sendMail ? (

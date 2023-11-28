@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Button, Heading, Spinner, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 
 const EmptyCapsule = () => {
   return (

@@ -6,7 +6,6 @@ const CountdownTimer = ({ date }) => {
   const [timeLeft, setTimeLeft] = useState(null);
 
   useEffect(() => {
-    console.log(timeLeft);
     const intervalId = setInterval(() => {
       const now = Date.now();
       const timeLeft = targetDate.getTime() - now;

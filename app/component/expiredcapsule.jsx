@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Heading, Icon, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, Icon, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 import { FaHourglassEnd } from 'react-icons/fa';
 
 const ExpiredCapsule = () => {
@@ -20,6 +21,18 @@ const ExpiredCapsule = () => {
       <Text fontSize="sm" color="gray.500" mt={4}>
         Time waits for no one, but there are always new adventures to explore!
       </Text>
+
+      <Button
+        colorScheme="teal"
+        bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
+        color="white"
+        variant="solid"
+        as={Link}
+        href={'/'}
+        my={10}
+      >
+        Journey Back to Home
+      </Button>
     </Box>
   );
 };
