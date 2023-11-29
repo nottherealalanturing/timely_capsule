@@ -1,4 +1,4 @@
-import { Avatar, Box, Center, Text } from '@chakra-ui/react';
+import { Avatar, Box, Center, HStack, Text } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
@@ -58,17 +58,19 @@ const UnveilTimer = ({ messageData }) => {
           mb={6}
           pos={'relative'}
         ></Box>
-        <Stack>
-          <Text
-            color={'green.500'}
-            textTransform={'uppercase'}
-            fontWeight={800}
-            fontSize={'sm'}
-            letterSpacing={1.1}
-          >
-            ID: {messageData.url}
-          </Text>
-
+        <Stack spacing={10}>
+          <HStack spacing={8} justify={'space-between'}>
+            <Text
+              color={'green.500'}
+              textTransform={'uppercase'}
+              fontWeight={800}
+              fontSize={'sm'}
+              letterSpacing={1.1}
+            >
+              ID: {messageData.url}
+            </Text>{' '}
+            <Avatar bg="teal.500" size={'sm'} />
+          </HStack>
           <Heading
             // eslint-disable-next-line react-hooks/rules-of-hooks
             color={useColorModeValue('gray.700', 'white')}
@@ -77,18 +79,16 @@ const UnveilTimer = ({ messageData }) => {
           >
             {messageData.title}
           </Heading>
+
           <Text color={'gray.500'} fontWeight={600}>
-            Mark your calendar for {messageData.sender}&apos;s message,
-            scheduled to be revealed on {formattedDate}.
+            Mark your calendar for {messageData.sender}&apos;s message, to be
+            revealed on {formattedDate}.
           </Text>
         </Stack>
         <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          <Avatar name={messageData.sender} bg={'gray.500'} />
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text color={'gray.500'} fontWeight={700}>
-              countdown: {formatTime(timeRemaining)}
-            </Text>
-          </Stack>
+          <Text fontWeight={600} fontSize={'sm'}>
+            COUNTDOWN : {formatTime(timeRemaining)}
+          </Text>
         </Stack>
       </Box>
     </Center>

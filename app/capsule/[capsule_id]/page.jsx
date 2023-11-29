@@ -106,9 +106,19 @@ const ViewCapsulePage = ({ params }) => {
             >
               {messageData.title}
             </Heading>
-            <Text color={'gray.500'}>
-              {formattedDeletionDate} | ID: {messageData.url}
-            </Text>
+            <HStack spacing={8} justify={'space-between'}>
+              <Text
+                color={'green.500'}
+                textTransform={'uppercase'}
+                fontWeight={800}
+                fontSize={'sm'}
+                letterSpacing={1.1}
+              >
+                {messageData.sender}
+              </Text>{' '}
+              <Avatar bg="teal.500" size={'sm'} />
+            </HStack>
+
             <Divider />
             <Text color={'gray.800'} fontSize="lg">
               {messageData.content}
@@ -118,13 +128,10 @@ const ViewCapsulePage = ({ params }) => {
               This message will be deleted in{' '}
               <Countdown date={messageData.deletionTime} />
             </Text>
-            <HStack spacing={4} align="center" justify="space-between">
-              <VStack align="start" spacing={1}>
-                <Text fontWeight="bold">{messageData.sender}</Text>
-                <Text color={'gray.500'}>{formattedDeletionDate}</Text>
-              </VStack>
-              <Avatar size="md" name={messageData.sender} bg={'gray.500'} />
-            </HStack>
+            <Divider />
+            <Text color={'gray.500'}>
+              {formattedDeletionDate} | ID: {messageData.url}
+            </Text>
           </VStack>
         </Box>
       )}

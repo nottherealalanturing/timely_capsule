@@ -18,10 +18,6 @@ const ExpiredCapsule = () => {
         completed its journey through time. It&apos;s now a relic of the past.
       </Text>
 
-      <Text fontSize="sm" color="gray.500" mt={4}>
-        Time waits for no one, but there are always new adventures to explore!
-      </Text>
-
       <Button
         colorScheme="teal"
         bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
