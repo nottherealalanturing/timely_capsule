@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "YOUR_APPLE_TEAM_ID.com.timelycapsule",
+        "paths": ["/c/*"]
+      }
+    ]
+  }
+}
